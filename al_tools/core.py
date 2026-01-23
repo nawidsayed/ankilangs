@@ -218,7 +218,6 @@ def generate_audio(
     audio_folder_path: Path,
     audio_exists_action: AudioExistsAction,
     data_dir: Path = Path("src/data"),
-    seed: int = 42,
     limit: int = None,
 ):
     """
@@ -232,7 +231,6 @@ def generate_audio(
     _ensure_db_exists(db_path, data_dir)
     _check_db_freshness(db_path, data_dir)
 
-    random.seed(seed)
     lang_short = locale.split("_")[0]
 
     # Read from SQLite
