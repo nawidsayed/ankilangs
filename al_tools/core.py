@@ -14,6 +14,7 @@ import os
 import re
 
 from google.cloud import texttospeech as tts
+import xlsxwriter
 
 
 def _ensure_db_exists(db_path: Path, data_dir: Path = Path("src/data")):
@@ -218,6 +219,7 @@ def generate_audio(
     audio_folder_path: Path,
     audio_exists_action: AudioExistsAction,
     data_dir: Path = Path("src/data"),
+    seed: int | str = 42,
     limit: int = None,
 ):
     """
@@ -226,10 +228,15 @@ def generate_audio(
     If the directory does not exist it will be created.
 
     Args:
+        seed: Random seed for voice selection. Use integer for reproducible results,
+            or "random" for fully random selection.
         limit: Maximum number of audio files to generate. None means no limit.
     """
     _ensure_db_exists(db_path, data_dir)
     _check_db_freshness(db_path, data_dir)
+
+    if seed != "random":
+        random.seed(seed)
 
     lang_short = locale.split("_")[0]
 
@@ -1614,6 +1621,183 @@ def sqlite2csv(db_path: Path, data_dir: Path):
     print(f"\nAll files exported from {db_path}")
 
 
+def _create_excel_review_file(
+    excel_file: Path,
+    rows: List,
+    fieldnames: List[str],
+):
+    """Create an Excel file for review with formatting and protection.
+
+    Features:
+    - Frozen header row
+    - Auto-filter on all columns
+    - Hidden GUID column
+    - Alternating row colors
+    - GUID and source_text columns are protected (non-editable)
+
+    Args:
+        excel_file: Path to output Excel file
+        rows: List of row data from database
+        fieldnames: List of column names
+    """
+    # Create workbook and worksheet
+    workbook = xlsxwriter.Workbook(str(excel_file))
+    worksheet = workbook.add_worksheet("Review")
+
+    # Define formats
+    header_format = workbook.add_format(
+        {
+            "bold": True,
+            "bg_color": "#4472C4",
+            "font_color": "white",
+            "align": "left",
+            "valign": "vcenter",
+            "border": 1,
+            "locked": True,
+        }
+    )
+
+    # Alternating row formats for locked columns (guid, source_text)
+    locked_even = workbook.add_format(
+        {
+            "bg_color": "#F2F2F2",
+            "border": 1,
+            "locked": True,
+            "align": "left",
+            "valign": "top",
+        }
+    )
+
+    locked_odd = workbook.add_format(
+        {
+            "bg_color": "#FFFFFF",
+            "border": 1,
+            "locked": True,
+            "align": "left",
+            "valign": "top",
+        }
+    )
+
+    # Alternating row formats for unlocked columns (editable)
+    unlocked_even = workbook.add_format(
+        {
+            "bg_color": "#F2F2F2",
+            "border": 1,
+            "locked": False,
+            "align": "left",
+            "valign": "top",
+        }
+    )
+
+    unlocked_odd = workbook.add_format(
+        {
+            "bg_color": "#FFFFFF",
+            "border": 1,
+            "locked": False,
+            "align": "left",
+            "valign": "top",
+        }
+    )
+
+    # Empty row format (no background color, unlocked)
+    empty_format = workbook.add_format(
+        {
+            "locked": False,
+        }
+    )
+
+    # Write header row
+    for col_idx, field in enumerate(fieldnames):
+        worksheet.write(0, col_idx, field, header_format)
+
+    # Write data rows with alternating colors and empty rows every 10 entries
+    current_row = 1
+    for idx, row in enumerate(rows, start=1):
+        # Determine if this is an alternating row
+        is_even = idx % 2 == 0
+
+        # Prepare row data
+        row_data = [
+            row["guid"] or "",
+            row["source_text"] or "",
+            row["target_text"] or "",
+            row["target_ipa"] or "",
+            row["pronunciation_hint"] or "",
+            row["spelling_hint"] or "",
+            row["reading_hint"] or "",
+            row["listening_hint"] or "",
+            row["notes"] or "",
+            "",  # review_comment
+        ]
+
+        # Write row data
+        for col_idx, value in enumerate(row_data):
+            # First two columns (guid, source_text) are locked, rest are unlocked
+            if col_idx < 2:
+                cell_format = locked_even if is_even else locked_odd
+            else:
+                cell_format = unlocked_even if is_even else unlocked_odd
+
+            worksheet.write(current_row, col_idx, value, cell_format)
+
+        current_row += 1
+
+        # Insert empty row every 10 entries (for visual separation)
+        if idx % 10 == 0 and idx < len(rows):
+            for col_idx in range(len(fieldnames)):
+                worksheet.write(current_row, col_idx, "", empty_format)
+            current_row += 1
+
+    # Set column widths for better readability
+    column_widths = {
+        "guid": 10,
+        "source_text": 20,
+        "target_text": 20,
+        "target_ipa": 15,
+        "pronunciation_hint": 18,
+        "spelling_hint": 18,
+        "reading_hint": 18,
+        "listening_hint": 18,
+        "notes": 25,
+        "review_comment": 30,
+    }
+
+    for col_idx, field in enumerate(fieldnames):
+        width = column_widths.get(field, 15)
+        worksheet.set_column(col_idx, col_idx, width)
+
+    # Hide GUID column (column A / index 0)
+    worksheet.set_column(0, 0, None, None, {"hidden": True})
+
+    # Freeze header row (freeze panes at row 1)
+    worksheet.freeze_panes(1, 0)
+
+    # Add autofilter to all columns
+    worksheet.autofilter(0, 0, current_row - 1, len(fieldnames) - 1)
+
+    # Protect worksheet (allows editing unlocked cells and filtering)
+    worksheet.protect(
+        "",
+        {
+            "select_locked_cells": True,
+            "select_unlocked_cells": True,
+            "format_cells": False,
+            "format_columns": False,
+            "format_rows": False,
+            "insert_columns": False,
+            "insert_rows": False,
+            "insert_hyperlinks": False,
+            "delete_columns": False,
+            "delete_rows": False,
+            "sort": True,
+            "autofilter": True,
+        },
+    )
+
+    # Close workbook
+    workbook.close()
+
+
 def export_review(
     db_path: Path,
     source_locale: str,
@@ -1626,7 +1810,8 @@ def export_review(
 
     Creates:
     1. CSV file with translation pairs, hints, and empty review comment column
-    2. Concatenated audio file with all target language audio sorted alphabetically
+    2. Excel file with formatting, frozen headers, and column protection
+    3. Concatenated audio file with all target language audio sorted alphabetically
 
     Args:
         db_path: Path to SQLite database
@@ -1653,11 +1838,13 @@ def export_review(
             tp.guid,
             bl_source.text as source_text,
             bl_target.text as target_text,
+            bl_target.ipa as target_ipa,
             bl_target.audio as target_audio,
             tp.pronunciation_hint,
             tp.spelling_hint,
             tp.reading_hint,
-            tp.listening_hint
+            tp.listening_hint,
+            tp.notes
         FROM translation_pair tp
         JOIN base_language bl_source
             ON tp.key = bl_source.key AND bl_source.locale = tp.source_locale
@@ -1682,10 +1869,12 @@ def export_review(
         "guid",
         "source_text",
         "target_text",
+        "target_ipa",
         "pronunciation_hint",
         "spelling_hint",
         "reading_hint",
         "listening_hint",
+        "notes",
         "review_comment",
     ]
 
@@ -1699,10 +1888,12 @@ def export_review(
                     "guid": row["guid"] or "",
                     "source_text": row["source_text"] or "",
                     "target_text": row["target_text"] or "",
+                    "target_ipa": row["target_ipa"] or "",
                     "pronunciation_hint": row["pronunciation_hint"] or "",
                     "spelling_hint": row["spelling_hint"] or "",
                     "reading_hint": row["reading_hint"] or "",
                     "listening_hint": row["listening_hint"] or "",
+                    "notes": row["notes"] or "",
                     "review_comment": "",
                 }
             )
@@ -1712,6 +1903,11 @@ def export_review(
                 writer.writerow({field: "" for field in fieldnames})
 
     print(f"CSV file '{csv_file}' written ({len(rows)} entries)")
+
+    # Generate Excel file with formatting
+    excel_file = output_dir / f"review_{source_locale}_to_{target_locale}.xlsx"
+    _create_excel_review_file(excel_file, rows, fieldnames)
+    print(f"Excel file '{excel_file}' written ({len(rows)} entries)")
 
     # Concatenate audio files
     # Collect audio file paths sorted alphabetically by key
