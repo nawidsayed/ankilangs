@@ -694,7 +694,8 @@
         "al_sq_al_yes.mp3",
         "al_sq_al_you_plural_y_all.mp3",
         "al_sq_al_you_singular.mp3",
-        "al_sq_al_young.mp3"
+        "al_sq_al_young.mp3",
+        "data.db"
     ],
     "name": "Albanian (EN to SQ) | 625 Words | AnkiLangs.org",
     "note_models": [
@@ -4245,7 +4246,7 @@
                 "[sound:al_sq_al_race_ethnicity.mp3]",
                 "",
                 "",
-                "ethnic group",
+                "human group",
                 "",
                 "",
                 "",
@@ -5067,7 +5068,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "space (outer space)",
+                "space",
                 "hapësira",
                 "/hapəˈsiɾa/",
                 "[sound:al_sq_al_space_outer_space.mp3]",
@@ -5380,29 +5381,6 @@
             ],
             "flags": 0,
             "guid": "svd*-mj~X)",
-            "note_model_uuid": "841172e6-49b1-41b9-86d9-69aa3a8247fd",
-            "tags": [
-                "AnkiLangs::SQ"
-            ]
-        },
-        {
-            "__type__": "Note",
-            "data": "",
-            "fields": [
-                "the (train) ticket",
-                "bileta (e trenit)",
-                "/biˈlɛta (ɛ ˈtɾɛnit)/",
-                "[sound:al_sq_al_the_train_ticket.mp3]",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "Audio:<br>Google Cloud TTS<br>Voice: Achernar"
-            ],
-            "flags": 0,
-            "guid": "hV;r_dX%?V",
             "note_model_uuid": "841172e6-49b1-41b9-86d9-69aa3a8247fd",
             "tags": [
                 "AnkiLangs::SQ"
@@ -5926,8 +5904,8 @@
                 "",
                 "",
                 "",
-                "",
-                "",
+                "place for drinks",
+                "place for drinks",
                 "Audio:<br>Google Cloud TTS<br>Voice: Achird"
             ],
             "flags": 0,
@@ -6869,8 +6847,8 @@
                 "",
                 "",
                 "",
-                "",
-                "",
+                "device",
+                "device",
                 "Audio:<br>Google Cloud TTS<br>Voice: Achernar"
             ],
             "flags": 0,
@@ -7091,7 +7069,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "the country (USA, France, etc.)",
+                "the country",
                 "shteti",
                 "/ˈʃtɛti/",
                 "[sound:al_sq_al_the_country_usa_france_etc.mp3]",
@@ -8594,8 +8572,8 @@
                 "",
                 "",
                 "",
-                "",
-                "",
+                "unit of time",
+                "unit of time",
                 "Audio:<br>Google Cloud TTS<br>Voice: Aoede"
             ],
             "flags": 0,
@@ -11216,8 +11194,8 @@
                 "",
                 "",
                 "",
-                "clothing",
-                "clothing",
+                "",
+                "",
                 "Audio:<br>Google Cloud TTS<br>Voice: Aoede"
             ],
             "flags": 0,
@@ -11653,8 +11631,8 @@
                 "",
                 "",
                 "",
-                "the season",
-                "the season",
+                "season",
+                "season",
                 "Audio:<br>Google Cloud TTS<br>Voice: Aoede"
             ],
             "flags": 0,
@@ -11866,6 +11844,29 @@
             ],
             "flags": 0,
             "guid": "g>z~X`>Jj!",
+            "note_model_uuid": "841172e6-49b1-41b9-86d9-69aa3a8247fd",
+            "tags": [
+                "AnkiLangs::SQ"
+            ]
+        },
+        {
+            "__type__": "Note",
+            "data": "",
+            "fields": [
+                "the ticket",
+                "bileta",
+                "/biˈlɛta/",
+                "[sound:al_sq_al_the_train_ticket.mp3]",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "Audio:<br>Google Cloud TTS<br>Voice: Achird"
+            ],
+            "flags": 0,
+            "guid": "hV;r_dX%?V",
             "note_model_uuid": "841172e6-49b1-41b9-86d9-69aa3a8247fd",
             "tags": [
                 "AnkiLangs::SQ"
@@ -12481,8 +12482,8 @@
                 "",
                 "",
                 "",
-                "of bird",
-                "of bird",
+                "",
+                "",
                 "Audio:<br>Google Cloud TTS<br>Voice: Achernar"
             ],
             "flags": 0,
@@ -13631,8 +13632,8 @@
                 "",
                 "",
                 "",
-                "leap up",
-                "leap up",
+                "leap",
+                "leap",
                 "Audio:<br>Google Cloud TTS<br>Voice: Aoede"
             ],
             "flags": 0,
@@ -14175,7 +14176,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "to shoot (a gun)",
+                "to shoot",
                 "të shtish",
                 "/tə ʃtiʃ/",
                 "[sound:al_sq_al_to_shoot_a_gun.mp3]",
@@ -15218,8 +15219,8 @@
                 "",
                 "",
                 "",
-                "the drink",
-                "the drink",
+                "drink",
+                "drink",
                 "Audio:<br>Google Cloud TTS<br>Voice: Aoede"
             ],
             "flags": 0,

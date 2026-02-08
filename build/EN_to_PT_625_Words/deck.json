@@ -1004,8 +1004,8 @@
                 "",
                 "",
                 "",
-                "not good",
-                "not good",
+                "",
+                "",
                 "Audio:<br>Google Cloud TTS<br>Voice: pt-PT-Standard-D"
             ],
             "flags": 0,
@@ -1740,8 +1740,8 @@
                 "",
                 "",
                 "",
-                "It is very large.",
-                "It is very large.",
+                "planet",
+                "planet",
                 "Picture:<br><a href=\"https://pixabay.com/photos/earth-globe-planet-world-space-11015/\">https://pixabay.com/photos/earth-globe-planet-world-space-11015/</a>"
             ],
             "flags": 0,
@@ -3807,7 +3807,7 @@
                 "/ˈmiɫ miˈʎõjʃ/",
                 "[sound:al_pt_pt_one_billion_1_000_000_000.mp3]",
                 "",
-                "",
+                "False friend: English 'billion' = 10⁹ (mil milhões). Portuguese 'bilião' = 10¹² (English 'trillion').",
                 "",
                 "",
                 "",
@@ -4245,7 +4245,7 @@
                 "[sound:al_pt_pt_race_ethnicity.mp3]",
                 "",
                 "",
-                "ethnic group",
+                "human group",
                 "",
                 "",
                 "",
@@ -5067,7 +5067,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "space (outer space)",
+                "space",
                 "o espaço",
                 "/u ˈɛʃpasu/",
                 "[sound:al_pt_pt_space_outer_space.mp3]",
@@ -5380,29 +5380,6 @@
             ],
             "flags": 0,
             "guid": "u}n&9[z~(l",
-            "note_model_uuid": "205e79a8-8be5-40ca-bc71-45317b68e192",
-            "tags": [
-                "AnkiLangs::PT"
-            ]
-        },
-        {
-            "__type__": "Note",
-            "data": "",
-            "fields": [
-                "the (train) ticket",
-                "o bilhete",
-                "/u biˈʎɛt(ɨ)/",
-                "[sound:al_pt_pt_the_train_ticket.mp3]",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
-            "flags": 0,
-            "guid": "m&vWQadaS]",
             "note_model_uuid": "205e79a8-8be5-40ca-bc71-45317b68e192",
             "tags": [
                 "AnkiLangs::PT"
@@ -7091,7 +7068,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "the country (USA, France, etc.)",
+                "the country",
                 "o país",
                 "/u paˈiz/",
                 "[sound:al_pt_pt_the_country_usa_france_etc.mp3]",
@@ -11875,6 +11852,29 @@
             "__type__": "Note",
             "data": "",
             "fields": [
+                "the ticket",
+                "o bilhete",
+                "/u biˈʎɛt(ɨ)/",
+                "[sound:al_pt_pt_the_train_ticket.mp3]",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "flags": 0,
+            "guid": "m&vWQadaS]",
+            "note_model_uuid": "205e79a8-8be5-40ca-bc71-45317b68e192",
+            "tags": [
+                "AnkiLangs::PT"
+            ]
+        },
+        {
+            "__type__": "Note",
+            "data": "",
+            "fields": [
                 "the time",
                 "o tempo",
                 "/u ˈtẽpu/",
@@ -14175,7 +14175,7 @@
             "__type__": "Note",
             "data": "",
             "fields": [
-                "to shoot (a gun)",
+                "to shoot",
                 "disparar",
                 "/diʃpɐˈɾaɾ/",
                 "[sound:al_pt_pt_to_shoot_a_gun.mp3]",
@@ -15304,7 +15304,7 @@
             "fields": [
                 "you",
                 "vocês",
-                "/vɔʃ/",
+                "/vuˈseʃ/",
                 "[sound:al_pt_pt_you_plural_y_all.mp3]",
                 "",
                 "",
