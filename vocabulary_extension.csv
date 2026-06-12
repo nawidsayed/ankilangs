@@ -1,0 +1,242 @@
+key,category
+who,question word
+what,question word
+where,question word
+when,question word
+why,question word
+how,question word
+which,question word
+me,pronoun
+him,pronoun
+her,pronoun
+us,pronoun
+them,pronoun
+my,pronoun
+your,pronoun
+his,pronoun
+its,pronoun
+our,pronoun
+their,pronoun
+mine,pronoun
+this,demonstrative
+that,demonstrative
+these,demonstrative
+those,demonstrative
+here,demonstrative
+there,demonstrative
+in,preposition
+on,preposition
+at,preposition
+to,preposition
+from,preposition
+with,preposition
+without,preposition
+for,preposition
+of,preposition
+about,preposition
+under,preposition
+over,preposition
+above,preposition
+between,preposition
+behind,preposition
+near,preposition
+inside,preposition
+outside,preposition
+through,preposition
+across,preposition
+around,preposition
+against,preposition
+before,preposition
+after,preposition
+and,conjunction
+but,conjunction
+or,conjunction
+because,conjunction
+if,conjunction
+so,conjunction
+while,conjunction
+although,conjunction
+than,conjunction
+as,conjunction
+until,conjunction
+that [conjunction],conjunction
+all,quantifier
+some,quantifier
+any,quantifier
+many,quantifier
+much,quantifier
+more,quantifier
+less,quantifier
+most,quantifier
+few,quantifier
+every,quantifier
+each,quantifier
+both,quantifier
+enough,quantifier
+several,quantifier
+none,quantifier
+other,quantifier
+another,quantifier
+such,quantifier
+now,adverb of time
+then,adverb of time
+today,adverb of time
+tomorrow,adverb of time
+yesterday,adverb of time
+always,adverb of time
+never,adverb of time
+often,adverb of time
+sometimes,adverb of time
+usually,adverb of time
+again,adverb of time
+soon,adverb of time
+already,adverb of time
+still,adverb of time
+early,adverb of time
+late,adverb of time
+later,adverb of time
+ever,adverb of time
+very,adverb of degree
+too,adverb of degree
+also,adverb of degree
+only,adverb of degree
+just,adverb of degree
+maybe,adverb of degree
+well,adverb of degree
+almost,adverb of degree
+together,adverb of degree
+really,adverb of degree
+to be,verb
+to have,verb
+to do,verb
+to make,verb
+to get,verb
+to give,verb
+to take,verb
+to come,verb
+to know,verb
+to want,verb
+to need,verb
+to use,verb
+to ask,verb
+to tell,verb
+to feel,verb
+to become,verb
+to leave,verb
+to put,verb
+to keep,verb
+to begin,verb
+to finish,verb
+to help,verb
+to show,verb
+to try,verb
+to live,verb
+to bring,verb
+to happen,verb
+to wait,verb
+to stay,verb
+to send,verb
+to meet,verb
+to read,verb
+to remember,verb
+to forget,verb
+to understand,verb
+to change,verb
+to move,verb
+to choose,verb
+to like,verb
+to hold,verb
+hungry,adjective
+thirsty,adjective
+tired,adjective
+easy,adjective
+difficult,adjective
+important,adjective
+true,adjective
+false,adjective
+full,adjective
+empty,adjective
+open [adjective],adjective
+closed,adjective
+correct,adjective
+wrong,adjective
+same,adjective
+different,adjective
+ready,adjective
+free,adjective
+busy,adjective
+possible,adjective
+real,adjective
+sure,adjective
+safe,adjective
+dangerous,adjective
+angry,adjective
+afraid,adjective
+kind,adjective
+next,adjective
+hello,social phrase
+goodbye,social phrase
+please,social phrase
+thank you,social phrase
+sorry,social phrase
+welcome,social phrase
+okay,social phrase
+excuse me,social phrase
+the name,social phrase
+the question,social phrase
+the aunt,family
+the uncle,family
+the cousin,family
+the nephew,family
+the niece,family
+the grandson,family
+the granddaughter,family
+the partner,family
+the stomach,body
+the chest,body
+the elbow,body
+the wrist,body
+the ankle,body
+the throat,body
+the cheek,body
+the chin,body
+the thumb,body
+the nail,body
+the butter,food
+the fruit,food
+the vegetable,food
+the meat,food
+the potato,food
+the tomato,food
+the onion,food
+the garlic,food
+the pasta,food
+the sauce,food
+the pepper,food
+the honey,food
+the chocolate,food
+the sandwich,food
+the towel,everyday object
+the mirror,everyday object
+the blanket,everyday object
+the pillow,everyday object
+the glasses,everyday object
+the watch,everyday object
+the wallet,everyday object
+the umbrella,everyday object
+the brush,everyday object
+the cloud,nature and weather
+the storm,nature and weather
+the weather,nature and weather
+the shadow,nature and weather
+the lightning,nature and weather
+the fog,nature and weather
+the thunder,nature and weather
+the home,place
+the supermarket,place
+the pharmacy,place
+the bakery,place
+the factory,place
+the border,place
+the station,place
+the parking lot,place
